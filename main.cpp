@@ -36,9 +36,8 @@ int main() {
     while(true) {
         imu.getData(&raw);
         imu.convertData(&raw,&value);
-        printf("gyro [deg/s] % .4f % .4f % .4f | accel [m/s^2] % .4f % .4f % .4f | T %.2f C | frame_error=%d\n",
-               value.Rate1[0],value.Rate1[1],value.Rate1[2],
-               value.Acc1[0],value.Acc1[1],value.Acc1[2],value.Temp,raw.frame_error?1:0);
+        // gyro [deg/s] + accel [m/s^2]
+        printf("gx % .4f gy % .4f gz % .4f ax % .4f ay % .4f az % .4f\n", value.Rate1[0],value.Rate1[1],value.Rate1[2], value.Acc1[0],value.Acc1[1],value.Acc1[2]);
         sleep_ms(20);
     }
 }
